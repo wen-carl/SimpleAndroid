@@ -22,11 +22,12 @@
         <activity android:name=".activity.SwipeActivity" />
         <activity
             android:name=".activity.Drawer2Activity"
+            android:label="@string/title_activity_drawer2"
             android:theme="@style/Theme.NoActionBar" />
         <activity
             android:name=".activity.Drawer1Activity"
             android:label="@string/title_activity_drawer1"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/Theme.NoActionBar" />
     </application>
 
 </manifest>
