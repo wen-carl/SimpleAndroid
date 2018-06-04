@@ -20,6 +20,17 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_drawer1"
-        app:menu="@menu/activity_drawer1_drawer" />
+        app:menu="@menu/activity_drawer1_drawer" >
+
+        <TextView
+            android:id="@+id/txtSetting"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="-45dp"
+            android:gravity="center"
+            android:background="#eeeeee"
+            android:text="Setting"/>
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

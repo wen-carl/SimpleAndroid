@@ -1,4 +1,5 @@
 package com.seven.simpleandroid.model
 
-class ClassModel {
+data class ClassModel(var name: String, var detail: String = "") {
+
 }

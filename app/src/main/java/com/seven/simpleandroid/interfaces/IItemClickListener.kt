@@ -1,4 +1,8 @@
 package com.seven.simpleandroid.interfaces
 
-interface IItemClickListener {
+import android.view.View
+
+interface IItemClickListener<T> {
+    fun itemClicked(view: View, position: Int, model: T)
+    fun itemLongClicked(view: View, position: Int, model: T)
 }
