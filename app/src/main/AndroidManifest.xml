@@ -27,7 +27,7 @@
         <activity
             android:name=".activity.Drawer1Activity"
             android:label="@string/title_activity_drawer1"
-            android:theme="@style/Theme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.BottomNavActivity"
             android:label="@string/title_activity_bottom_nav" />
