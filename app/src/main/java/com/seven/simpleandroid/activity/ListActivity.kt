@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ClassAdapter
 import com.seven.simpleandroid.interfaces.IItemClickListener
 import com.seven.simpleandroid.model.ClassModel
+import com.seven.simpleandroid.widget.ItemDecoration
 import kotlinx.android.synthetic.main.list_activity.*
 
 class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
@@ -36,6 +38,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
+        rvMain.addItemDecoration(ItemDecoration(this))
         rvMain.adapter = adapter
     }
 

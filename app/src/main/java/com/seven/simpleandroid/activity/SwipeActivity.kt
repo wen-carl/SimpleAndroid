@@ -1,14 +1,17 @@
 package com.seven.simpleandroid.activity
 
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ClassAdapter
 import com.seven.simpleandroid.interfaces.IItemClickListener
 import com.seven.simpleandroid.model.ClassModel
+import com.seven.simpleandroid.widget.ItemDecoration
 import kotlinx.android.synthetic.main.activity_swipe.*
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.delay
@@ -34,13 +37,16 @@ class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
 
         val adapter = ClassAdapter(this, data)
         rvSwipe.layoutManager = LinearLayoutManager(this)
+        rvSwipe.addItemDecoration(ItemDecoration(this, R.drawable.list_divider))
         rvSwipe.adapter = adapter
+
+        swipeRefresh.setColorSchemeColors(Color.GREEN, Color.RED, Color.BLUE)
     }
 
     fun bindEvent() {
         swipeRefresh.setOnRefreshListener {
             launch(CommonPool) {
-                delay(1000)
+                delay(3000)
                 runOnUiThread({
                     loadMore()
                     swipeRefresh.isRefreshing = false
