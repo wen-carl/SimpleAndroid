@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.view.MenuItem
 import android.view.View
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ClassAdapter
@@ -23,6 +23,7 @@ class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_swipe)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         bindData()
         bindEvent()
@@ -37,7 +38,7 @@ class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
 
         val adapter = ClassAdapter(this, data)
         rvSwipe.layoutManager = LinearLayoutManager(this)
-        rvSwipe.addItemDecoration(ItemDecoration(this, R.drawable.list_divider))
+        rvSwipe.addItemDecoration(ItemDecoration(this, drawableId = R.drawable.list_divider))
         rvSwipe.adapter = adapter
 
         swipeRefresh.setColorSchemeColors(Color.GREEN, Color.RED, Color.BLUE)
@@ -73,5 +74,13 @@ class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
 
     override fun itemLongClicked(view: View, position: Int, model: ClassModel) {
         Snackbar.make(rvSwipe, model.name + " Long Clicked!", Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        when (item?.itemId) {
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

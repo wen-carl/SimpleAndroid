@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/seven"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/seven"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -23,14 +23,26 @@
         <activity
             android:name=".activity.Drawer2Activity"
             android:label="@string/title_activity_drawer2"
-            android:theme="@style/Theme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.Drawer1Activity"
             android:label="@string/title_activity_drawer1"
-            android:theme="@style/Theme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.BottomNavActivity"
             android:label="@string/title_activity_bottom_nav" />
+        <activity
+            android:name=".activity.ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.RecyclerViewActivity"
+            android:label="@string/title_activity_recycler"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ToolbarActivity"
+            android:label="@string/title_activity_toolbar"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

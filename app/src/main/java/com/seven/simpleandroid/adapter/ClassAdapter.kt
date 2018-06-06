@@ -30,7 +30,12 @@ class ClassAdapter(var context: Context, var data: MutableList<ClassModel> = mut
     override fun onBindViewHolder(holder: ClassViewHolder, position: Int) {
         val model = data[position]
         holder.name.text = model.name
-        holder.detail.text = model.detail
+        if (model.detail.isEmpty()) {
+            holder.detail.visibility = View.GONE
+        } else {
+            holder.detail.visibility = View.VISIBLE
+            holder.detail.text = model.detail
+        }
 
         if (!holder.itemView.hasOnClickListeners()) {
             holder.itemView.setOnClickListener({

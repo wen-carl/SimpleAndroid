@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_vertical"
+        android:title="@string/action_vertical"
+        android:icon="@mipmap/vertical"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_horizontal"
+        android:title="@string/action_horizontal"
+        android:icon="@mipmap/horizontal"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_grid_v"
+        android:title="@string/action_grid_v"
+        android:icon="@mipmap/grid"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_grid_h"
+        android:title="@string/action_grid_h"
+        android:icon="@mipmap/grid"
+        app:showAsAction="always" />
+</menu>

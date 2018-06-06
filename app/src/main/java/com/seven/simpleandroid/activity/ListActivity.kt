@@ -35,6 +35,9 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("Drawer1", "Drawer layout is super layout"))
         data.add(ClassModel("Drawer2", "Drawer layout is child layout"))
         data.add(ClassModel("BottomNavigation"))
+        data.add(ClassModel("ScrollingActivity"))
+        data.add(ClassModel("RecyclerView", "Vertical, Horizontal, Grid_Vertical, Grid_Horizontal"))
+        data.add(ClassModel("ToolbarActivity", "CollapsingToolbarLayout, TabLayout"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
@@ -53,6 +56,9 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "Drawer1" -> Drawer1Activity::class.java
             "Drawer2" -> Drawer2Activity::class.java
             "BottomNavigation" -> BottomNavActivity::class.java
+            "ScrollingActivity" -> ScrollingActivity::class.java
+            "RecyclerView" -> RecyclerViewActivity::class.java
+            "ToolbarActivity" -> ToolbarActivity::class.java
             else -> null
         }
 
