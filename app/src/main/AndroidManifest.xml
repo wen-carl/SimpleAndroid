@@ -43,6 +43,10 @@
             android:name=".activity.ToolbarActivity"
             android:label="@string/title_activity_toolbar"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.NestedActivity"
+            android:label="@string/title_activity_nested"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

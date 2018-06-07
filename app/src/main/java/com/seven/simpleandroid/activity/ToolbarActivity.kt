@@ -1,10 +1,15 @@
 package com.seven.simpleandroid.activity
 
+import android.nfc.Tag
+import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.AppBarLayout
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.seven.simpleandroid.R
 import kotlinx.android.synthetic.main.activity_toolbar.*
 
@@ -17,9 +22,9 @@ class ToolbarActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = ""
 
-        toolbar_layout.addOnLayoutChangeListener({ view: View, i: Int, i1: Int, i2: Int, i3: Int, i4: Int, i5: Int, i6: Int, i7: Int ->
-            val s = 1
-        })
+        app_bar.addOnOffsetChangedListener { appbar: AppBarLayout, i: Int ->
+            Log.i("ToolbarActivity", "Offset: ${i}")
+        }
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

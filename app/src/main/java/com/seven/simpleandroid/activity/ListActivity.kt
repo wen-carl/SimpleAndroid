@@ -38,6 +38,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("ScrollingActivity"))
         data.add(ClassModel("RecyclerView", "Vertical, Horizontal, Grid_Vertical, Grid_Horizontal"))
         data.add(ClassModel("ToolbarActivity", "CollapsingToolbarLayout, TabLayout"))
+        data.add(ClassModel("NestedActivity"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
@@ -59,6 +60,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "ScrollingActivity" -> ScrollingActivity::class.java
             "RecyclerView" -> RecyclerViewActivity::class.java
             "ToolbarActivity" -> ToolbarActivity::class.java
+            "NestedActivity" -> NestedActivity::class.java
             else -> null
         }
 
