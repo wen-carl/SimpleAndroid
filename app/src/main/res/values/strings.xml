@@ -110,5 +110,6 @@
     <string name="action_grid_h">GridHorizontal</string>
     <string name="title_activity_toolbar">ToolbarActivity</string>
     <string name="title_activity_nested">NestedActivity</string>
+    <string name="title_activity_fragment">FragmentActivity</string>
 
 </resources>

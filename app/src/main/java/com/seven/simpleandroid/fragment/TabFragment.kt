@@ -1,6 +1,5 @@
-package com.seven.simpleandroid.Fragment
+package com.seven.simpleandroid.fragment
 
-import android.support.v4.app.FragmentManager
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -25,7 +24,6 @@ private const val TITLE = "title"
  */
 class TabFragment : Fragment() {
 
-    // TODO: Rename and change types of parameters
     private var title: String? = null
     private var listener: OnFragmentInteractionListener? = null
 
@@ -40,7 +38,6 @@ class TabFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tab, container, false)
     }
 
@@ -68,31 +65,11 @@ class TabFragment : Fragment() {
         listener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
     interface OnFragmentInteractionListener {
         fun onFragmentInteraction(uri: Uri)
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TabFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String) =
             TabFragment().apply {

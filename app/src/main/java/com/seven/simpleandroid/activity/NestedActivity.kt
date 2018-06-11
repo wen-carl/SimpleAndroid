@@ -7,9 +7,8 @@ import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
-import com.seven.simpleandroid.Fragment.TabFragment
+import com.seven.simpleandroid.fragment.TabFragment
 import com.seven.simpleandroid.R
-import com.seven.simpleandroid.R.id.*
 import com.seven.simpleandroid.adapter.TabFragmentAdapter
 import kotlinx.android.synthetic.main.activity_nested.*
 

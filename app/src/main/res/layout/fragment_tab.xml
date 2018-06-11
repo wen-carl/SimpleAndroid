@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Fragment.TabFragment">
+    tools:context=".fragment.TabFragment">
 
     <TextView
         android:id="@+id/txtContent"

@@ -3,7 +3,7 @@ package com.seven.simpleandroid.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.seven.simpleandroid.Fragment.TabFragment
+import com.seven.simpleandroid.fragment.TabFragment
 
 class TabFragmentAdapter(fm: FragmentManager, val data: List<String>) : FragmentPagerAdapter(fm) {
 

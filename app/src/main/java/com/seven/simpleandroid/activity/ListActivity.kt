@@ -1,10 +1,10 @@
 package com.seven.simpleandroid.activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.seven.simpleandroid.R
@@ -39,6 +39,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("RecyclerView", "Vertical, Horizontal, Grid_Vertical, Grid_Horizontal"))
         data.add(ClassModel("ToolbarActivity", "CollapsingToolbarLayout, TabLayout"))
         data.add(ClassModel("NestedActivity"))
+        data.add(ClassModel("FragmentActivity"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
@@ -61,6 +62,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "RecyclerView" -> RecyclerViewActivity::class.java
             "ToolbarActivity" -> ToolbarActivity::class.java
             "NestedActivity" -> NestedActivity::class.java
+            "FragmentActivity" -> FragmentActivity::class.java
             else -> null
         }
 
