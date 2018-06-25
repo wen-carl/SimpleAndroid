@@ -29,7 +29,7 @@ class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         bindEvent()
     }
 
-    fun bindData() {
+    private fun bindData() {
         val data = mutableListOf<ClassModel>()
         for (i in 0..25) {
             val char = 'A' + i
@@ -44,7 +44,7 @@ class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         swipeRefresh.setColorSchemeColors(Color.GREEN, Color.RED, Color.BLUE)
     }
 
-    fun bindEvent() {
+    private fun bindEvent() {
         swipeRefresh.setOnRefreshListener {
             launch(CommonPool) {
                 delay(3000)
@@ -59,7 +59,7 @@ class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         adapter.itemClick = this
     }
 
-    fun loadMore() {
+    private fun loadMore() {
         val adapter = rvSwipe.adapter as ClassAdapter
         val count = Random().nextInt(26)
         for (i in 0.. + count) {

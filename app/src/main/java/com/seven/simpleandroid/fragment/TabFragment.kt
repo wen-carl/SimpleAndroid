@@ -44,7 +44,7 @@ class TabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val text = getString(R.string.large_text)
-        if ("One".equals(title)) {
+        if ("One" == title) {
             txtContent.text = title.toString() + "\n\n" + text
         } else {
             txtContent.text = title ?: ""

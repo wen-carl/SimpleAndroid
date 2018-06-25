@@ -10,7 +10,7 @@ import com.seven.simpleandroid.R
 import com.seven.simpleandroid.interfaces.IItemClickListener
 import com.seven.simpleandroid.model.ClassModel
 
-class ClassAdapter(var context: Context, var data: MutableList<ClassModel> = mutableListOf<ClassModel>()) : RecyclerView.Adapter<ClassViewHolder>() {
+class ClassAdapter(var context: Context, var data: MutableList<ClassModel> = mutableListOf()) : RecyclerView.Adapter<ClassViewHolder>() {
 
     var itemClick: IItemClickListener<ClassModel>? = null
 

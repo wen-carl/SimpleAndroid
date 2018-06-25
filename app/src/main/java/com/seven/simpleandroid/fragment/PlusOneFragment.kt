@@ -36,7 +36,7 @@ class PlusOneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_plus.text = "${index}"
+        btn_plus.text = "$index"
         btn_plus.setOnClickListener {
             mListener?.onAdd(index)
         }

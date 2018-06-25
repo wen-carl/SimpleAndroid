@@ -40,10 +40,10 @@ class ItemDecoration(val context: Context, var spanCount: Int = 0, var drawable:
     override fun onDraw(c: Canvas?, parent: RecyclerView?, state: RecyclerView.State?) {
         super.onDraw(c, parent, state)
 
-        var left: Int = 0
-        var right: Int = 0
-        var top: Int = 0
-        var bottom: Int = 0
+        var left = 0
+        var right = 0
+        var top = 0
+        var bottom = 0
         val manager = parent?.layoutManager
         if (manager != null) {
             when (manager) {

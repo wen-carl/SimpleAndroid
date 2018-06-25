@@ -6,10 +6,7 @@ import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
 
 fun BottomNavigationView.enableShiftMode(enable: Boolean) {
-    val menuView = this.getMenuView()
-    if (null != menuView) {
-        menuView.setField("mShiftingMode", enable)
-    }
+    getMenuView()?.setField("mShiftingMode", enable)
 }
 
 @SuppressLint("RestrictedApi")
