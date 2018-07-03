@@ -38,14 +38,14 @@ class ClassAdapter(var context: Context, var data: MutableList<ClassModel> = mut
         }
 
         if (!holder.itemView.hasOnClickListeners()) {
-            holder.itemView.setOnClickListener({
+            holder.itemView.setOnClickListener {
                 itemClick?.itemClicked(it, holder.adapterPosition, data[holder.adapterPosition])
-            })
+            }
 
-            holder.itemView.setOnLongClickListener({
+            holder.itemView.setOnLongClickListener {
                 itemClick?.itemLongClicked(it, holder.adapterPosition, data[holder.adapterPosition])
                 return@setOnLongClickListener true
-            })
+            }
 
         }
     }

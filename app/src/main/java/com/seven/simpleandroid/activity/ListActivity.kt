@@ -39,6 +39,8 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("ToolbarActivity", "CollapsingToolbarLayout, TabLayout"))
         data.add(ClassModel("NestedActivity"))
         data.add(ClassModel("FragmentActivity"))
+        data.add(ClassModel("MultipleTabActivity"))
+        data.add(ClassModel("ViewPagerActivity"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
@@ -62,6 +64,8 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "ToolbarActivity" -> ToolbarActivity::class.java
             "NestedActivity" -> NestedActivity::class.java
             "FragmentActivity" -> FragmentActivity::class.java
+            "MultipleTabActivity" ->MultipleTabActivity::class.java
+            "ViewPagerActivity" -> ViewPagerActivity::class.java
             else -> null
         }
 
