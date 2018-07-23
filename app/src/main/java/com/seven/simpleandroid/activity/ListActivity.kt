@@ -40,7 +40,8 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("NestedActivity"))
         data.add(ClassModel("FragmentActivity"))
         data.add(ClassModel("MultipleTabActivity"))
-        data.add(ClassModel("ViewPagerActivity"))
+        data.add(ClassModel("BannerActivity"))
+        data.add(ClassModel("MoveActivity"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
@@ -65,7 +66,8 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "NestedActivity" -> NestedActivity::class.java
             "FragmentActivity" -> FragmentActivity::class.java
             "MultipleTabActivity" ->MultipleTabActivity::class.java
-            "ViewPagerActivity" -> ViewPagerActivity::class.java
+            "BannerActivity" -> BannerActivity::class.java
+            "MoveActivity" -> MoveActivity::class.java
             else -> null
         }
 

@@ -58,7 +58,8 @@
             android:name=".activity.MultipleTabActivity"
             android:label="@string/title_activity_multiple_tab"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.ViewPagerActivity"></activity>
+        <activity android:name=".activity.BannerActivity" />
+        <activity android:name=".activity.MoveActivity"></activity>
     </application>
 
 </manifest>
