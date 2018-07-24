@@ -3,7 +3,10 @@
     package="com.seven.simpleandroid">
 
     <!-- To access Google+ APIs: -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 摄像头权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
 
     <application
         android:allowBackup="true"
@@ -59,7 +62,9 @@
             android:label="@string/title_activity_multiple_tab"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.BannerActivity" />
-        <activity android:name=".activity.MoveActivity"></activity>
+        <activity android:name=".activity.MoveActivity" />
+        <activity android:name=".activity.QRCodeActivity" />
+        <activity android:name=".activity.ScanActivity" />
     </application>
 
 </manifest>
