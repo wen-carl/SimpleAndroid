@@ -43,6 +43,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("BannerActivity"))
         data.add(ClassModel("MoveActivity"))
         data.add(ClassModel("QRCodeActivity"))
+        data.add(ClassModel("WifiActivity"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
@@ -70,6 +71,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "BannerActivity" -> BannerActivity::class.java
             "MoveActivity" -> MoveActivity::class.java
             "QRCodeActivity" -> QRCodeActivity::class.java
+            "WifiActivity" -> WifiActivity::class.java
             else -> null
         }
 

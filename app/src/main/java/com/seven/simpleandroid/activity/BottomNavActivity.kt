@@ -5,12 +5,12 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import android.view.View
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.BottomNavFragmentAdapter
 import com.seven.simpleandroid.extensions.enableMenuItemShiftMode
 import com.seven.simpleandroid.extensions.enableShiftMode
 import kotlinx.android.synthetic.main.activity_bottom_nav.*
-import android.view.View
 
 
 class BottomNavActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {

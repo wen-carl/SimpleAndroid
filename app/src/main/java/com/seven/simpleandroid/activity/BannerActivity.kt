@@ -1,10 +1,13 @@
 package com.seven.simpleandroid.activity
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.seven.simpleandroid.R
-import com.seven.simpleandroid.imageloader.GlideImageLoader
 import com.youth.banner.BannerConfig
+import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.activity_banner.*
 
 class BannerActivity : AppCompatActivity() {
@@ -19,5 +22,13 @@ class BannerActivity : AppCompatActivity() {
             .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
             .setDelayTime(2000)
             .start()
+    }
+
+    class GlideImageLoader() : ImageLoader() {
+        override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
+            Glide.with(context!!)
+                .load(path as String)
+                .into(imageView!!)
+        }
     }
 }

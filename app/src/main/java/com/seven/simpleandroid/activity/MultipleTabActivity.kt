@@ -1,29 +1,16 @@
 package com.seven.simpleandroid.activity
 
-import android.support.design.widget.TabLayout
+import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.os.Bundle
-import android.os.Environment
-import android.support.v4.app.NavUtils
-import android.view.LayoutInflater
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
-
 import com.seven.simpleandroid.R
-import com.seven.simpleandroid.R.id.*
 import com.seven.simpleandroid.fragment.MultipleTabFragment
-import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_multiple_tab.*
-import kotlinx.android.synthetic.main.item_multiple_tab.view.*
-import java.io.File
 
 class MultipleTabActivity : AppCompatActivity() {
 
