@@ -11,7 +11,7 @@ public class ReflectEx {
         mFiled.setAccessible(true);
         mFiled.set(obj, value);
     }
-
+    
     public static <V> V getField(Object obj, @NonNull String field) throws NoSuchFieldException, IllegalAccessException {
         Class mClass = obj.getClass();
         Field mFiled = mClass.getDeclaredField(field);

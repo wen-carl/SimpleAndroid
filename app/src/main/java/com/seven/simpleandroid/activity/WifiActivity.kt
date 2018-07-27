@@ -9,7 +9,6 @@ import android.net.wifi.WifiManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.WifiDataAdapter
 import es.dmoral.toasty.Toasty
@@ -111,6 +110,7 @@ class WifiActivity : AppCompatActivity() {
                     }
                 }
                 WifiManager.SCAN_RESULTS_AVAILABLE_ACTION -> {
+                    btn_start.isEnabled = true
                     val adapter = rv_wifi.adapter as WifiDataAdapter
                     adapter.data = mManager.scanResults
                     adapter.notifyDataSetChanged()
