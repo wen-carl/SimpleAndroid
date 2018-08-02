@@ -7,6 +7,7 @@ import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.annotation.UiThread
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.text.TextUtils
@@ -182,6 +183,7 @@ class WifiActivity : AppCompatActivity() {
         }
     }
 
+    @UiThread
     private fun disConnectItem() {
         mManager.disconnect()
     }
