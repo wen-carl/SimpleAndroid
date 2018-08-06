@@ -10,6 +10,7 @@ import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ClassAdapter
 import com.seven.simpleandroid.interfaces.IItemClickListener
 import com.seven.simpleandroid.model.ClassModel
+import com.seven.simpleandroid.utils.Permission
 import com.seven.simpleandroid.widget.ItemDecoration
 import kotlinx.android.synthetic.main.list_activity.*
 
@@ -44,6 +45,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("MoveActivity"))
         data.add(ClassModel("QRCodeActivity"))
         data.add(ClassModel("WifiActivity"))
+        data.add(ClassModel("PermissionActivity"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
@@ -72,6 +74,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "MoveActivity" -> MoveActivity::class.java
             "QRCodeActivity" -> QRCodeActivity::class.java
             "WifiActivity" -> WifiActivity::class.java
+            "PermissionActivity" -> PermissionActivity::class.java
             else -> null
         }
 
