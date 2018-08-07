@@ -69,7 +69,9 @@
         <activity android:name=".activity.QRCodeActivity" />
         <activity android:name=".activity.ScanActivity" />
         <activity android:name=".activity.WifiActivity" />
-        <activity android:name=".activity.PermissionActivity"></activity>
+        <activity android:name=".activity.PermissionActivity" />
+        <activity android:name=".activity.SharedImageActivity" />
+        <activity android:name=".activity.SharedElementActivity"></activity>
     </application>
 
 </manifest>

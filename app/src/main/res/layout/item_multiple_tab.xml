@@ -8,7 +8,8 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?android:selectableItemBackground">
 
         <ImageView
             android:id="@+id/img"
@@ -24,9 +25,6 @@
             android:id="@+id/tv_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
             android:text="TextView"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"

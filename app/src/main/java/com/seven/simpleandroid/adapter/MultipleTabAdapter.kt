@@ -13,9 +13,17 @@ import com.seven.simpleandroid.model.ImgSourceType
 import java.io.File
 
 class MultipleTabAdapter(val data: List<ImgModel>) : RecyclerView.Adapter<MultipleTabAdapter.ViewHolder>() {
+
+    var onItemClickListener: IOnItemClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MultipleTabAdapter.ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_multiple_tab, parent, false)
-        return ViewHolder(itemView)
+        val holder = ViewHolder(itemView)
+
+        itemView.setOnClickListener {
+            onItemClickListener?.onItemClicked(data[holder.adapterPosition], holder)
+        }
+        return holder
     }
 
     override fun getItemCount(): Int {
@@ -24,6 +32,10 @@ class MultipleTabAdapter(val data: List<ImgModel>) : RecyclerView.Adapter<Multip
 
     override fun onBindViewHolder(holder: MultipleTabAdapter.ViewHolder, position: Int) {
         holder.bind(data[position])
+    }
+
+    interface IOnItemClickListener {
+        fun onItemClicked(model: ImgModel, holder: ViewHolder)
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

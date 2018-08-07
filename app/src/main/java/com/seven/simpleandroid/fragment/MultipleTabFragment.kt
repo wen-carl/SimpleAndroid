@@ -1,7 +1,10 @@
 package com.seven.simpleandroid.fragment
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -10,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.seven.simpleandroid.R
+import com.seven.simpleandroid.activity.SharedImageActivity
 import com.seven.simpleandroid.adapter.MultipleTabAdapter
 import com.seven.simpleandroid.model.ImgModel
 import com.seven.simpleandroid.model.ImgSourceType
@@ -17,7 +21,8 @@ import kotlinx.android.synthetic.main.fragment_multiple_tab.*
 
 private const val ARG_PARAM = "param"
 
-class MultipleTabFragment : Fragment() {
+class MultipleTabFragment : Fragment(), MultipleTabAdapter.IOnItemClickListener {
+
     private val TAG = MultipleTabFragment::class.java.simpleName
 
     private var param: String? = null
@@ -99,8 +104,21 @@ class MultipleTabFragment : Fragment() {
             data.add(model)
         }
 
-        recycler_view.adapter = MultipleTabAdapter(data)
+        val adapter = MultipleTabAdapter(data)
+        adapter.onItemClickListener = this
+        recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(activity)
+    }
+
+    override fun onItemClicked(model: ImgModel, holder: MultipleTabAdapter.ViewHolder) {
+        val intent = Intent(activity, SharedImageActivity::class.java)
+
+        val pair = Pair(holder.img, "image")
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity as Activity, holder.img, "image")
+        intent.putExtra(SharedImageActivity.IMAGE_TYPE, model.type.value)
+        intent.putExtra(SharedImageActivity.IMAGE_URL, model.url)
+        intent.putExtra(SharedImageActivity.IMAGE_ID, model.id)
+        startActivity(intent, options.toBundle())
     }
 
     private fun log(msg: String) {
