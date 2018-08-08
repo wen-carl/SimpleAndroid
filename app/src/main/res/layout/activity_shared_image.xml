@@ -6,14 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".activity.SharedImageActivity">
 
-    <ImageView
-        android:id="@+id/iv"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/imagePager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/transparent" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

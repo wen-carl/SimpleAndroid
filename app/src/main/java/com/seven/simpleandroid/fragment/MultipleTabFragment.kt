@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.activity.SharedImageActivity
@@ -111,14 +112,7 @@ class MultipleTabFragment : Fragment(), MultipleTabAdapter.IOnItemClickListener 
     }
 
     override fun onItemClicked(model: ImgModel, holder: MultipleTabAdapter.ViewHolder) {
-        val intent = Intent(activity, SharedImageActivity::class.java)
-
-        val pair = Pair(holder.img, "image")
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity as Activity, holder.img, "image")
-        intent.putExtra(SharedImageActivity.IMAGE_TYPE, model.type.value)
-        intent.putExtra(SharedImageActivity.IMAGE_URL, model.url)
-        intent.putExtra(SharedImageActivity.IMAGE_ID, model.id)
-        startActivity(intent, options.toBundle())
+        Toast.makeText(activity, "clicked: ${holder.adapterPosition}", Toast.LENGTH_SHORT).show()
     }
 
     private fun log(msg: String) {

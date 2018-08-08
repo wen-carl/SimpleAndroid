@@ -46,6 +46,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("QRCodeActivity"))
         data.add(ClassModel("WifiActivity"))
         data.add(ClassModel("PermissionActivity"))
+        data.add(ClassModel("SharedElementActivity"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
@@ -75,6 +76,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "QRCodeActivity" -> QRCodeActivity::class.java
             "WifiActivity" -> WifiActivity::class.java
             "PermissionActivity" -> PermissionActivity::class.java
+            "SharedElementActivity" -> SharedElementActivity::class.java
             else -> null
         }
 
