@@ -20,7 +20,7 @@ class FragmentActivity : AppCompatActivity(), PlusOneFragment.OnFragmentInteract
 
     private fun addFragment(index: Int) {
         val transcation = supportFragmentManager.beginTransaction()
-        transcation.setCustomAnimations(R.anim.left_in, R.anim.right_out)
+        transcation.setCustomAnimations(R.anim.left_in, R.anim.right_out, R.anim.right_in, R.anim.left_out)
         val fragment = PlusOneFragment.newInstance(index + 1)
         if (0 == index) {
             transcation.add(R.id.container, fragment, "$index")
