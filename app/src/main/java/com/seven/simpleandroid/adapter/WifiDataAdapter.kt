@@ -59,10 +59,10 @@ class WifiDataAdapter(var data: List<WifiItem>) : RecyclerView.Adapter<WifiDataA
         holder.bind(data[position])
     }
 
-    class WifiHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        val tvInfo = itemView!!.findViewById<TextView>(R.id.tv_info)
-        val tvSecurity = itemView!!.findViewById<TextView>(R.id.tv_security)
-        val ivWifi = itemView!!.findViewById<ImageView>(R.id.iv_wifi)
+    class WifiHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvInfo = itemView.findViewById<TextView>(R.id.tv_info)
+        val tvSecurity = itemView.findViewById<TextView>(R.id.tv_security)
+        val ivWifi = itemView.findViewById<ImageView>(R.id.iv_wifi)
 
         fun bind(wifiInfo: WifiItem) {
             tvInfo.text = wifiInfo.ssid

@@ -13,9 +13,9 @@ import com.seven.simpleandroid.interfaces.IItemClickListener
 import com.seven.simpleandroid.model.ClassModel
 import com.seven.simpleandroid.widget.ItemDecoration
 import kotlinx.android.synthetic.main.activity_swipe.*
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.delay
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.CommonPool
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.*
 
 class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {

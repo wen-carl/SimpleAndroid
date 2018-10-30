@@ -18,9 +18,11 @@ class ToolbarActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = ""
 
+        /*
         app_bar.addOnOffsetChangedListener { appbar: AppBarLayout, i: Int ->
             Log.i("ToolbarActivity", "Offset: $i")
         }
+        */
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

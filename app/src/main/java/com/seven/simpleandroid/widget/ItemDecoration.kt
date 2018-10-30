@@ -15,21 +15,21 @@ class ItemDecoration(val context: Context, var spanCount: Int = 0, var drawable:
 
     constructor(context: Context, spanCount: Int = 0, drawableId: Int) : this(context, spanCount, context.getDrawable(drawableId))
 
-    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         super.getItemOffsets(outRect, view, parent, state)
 
-        val manager = parent?.layoutManager
+        val manager = parent.layoutManager
         if (manager != null) {
             when (manager) {
                 is GridLayoutManager -> {
-                    outRect?.top = drawable.intrinsicHeight
-                    outRect?.left = drawable.intrinsicWidth
+                    outRect.top = drawable.intrinsicHeight
+                    outRect.left = drawable.intrinsicWidth
                 }
                 is LinearLayoutManager -> {
                     if (RecyclerView.VERTICAL == manager.orientation) {
-                        outRect?.top = drawable.intrinsicHeight
+                        outRect.top = drawable.intrinsicHeight
                     } else {
-                        outRect?.left = drawable.intrinsicWidth
+                        outRect.left = drawable.intrinsicWidth
                     }
                 }
                 else -> {}
@@ -37,14 +37,14 @@ class ItemDecoration(val context: Context, var spanCount: Int = 0, var drawable:
         }
     }
 
-    override fun onDraw(c: Canvas?, parent: RecyclerView?, state: RecyclerView.State?) {
+    override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
 
         var left = 0
         var right = 0
         var top = 0
         var bottom = 0
-        val manager = parent?.layoutManager
+        val manager = parent.layoutManager
         if (manager != null) {
             when (manager) {
                 is GridLayoutManager -> {
