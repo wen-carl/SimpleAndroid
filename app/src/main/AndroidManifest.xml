@@ -71,7 +71,11 @@
         <activity android:name=".activity.WifiActivity" />
         <activity android:name=".activity.PermissionActivity" />
         <activity android:name=".activity.SharedImageActivity" />
-        <activity android:name=".activity.SharedElementActivity"></activity>
+        <activity android:name=".activity.SharedElementActivity" />
+        <activity
+            android:name=".activity.NestedViewPagerActivity"
+            android:label="@string/title_activity_nested_view_pager"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
