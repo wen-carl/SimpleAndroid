@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.seven.simpleandroid"
         minSdkVersion 21
@@ -20,7 +21,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '28.0.3'
+    dexOptions {
+        javaMaxHeapSize "1G"
+
+        //是否支持大工程模式
+        jumboMode = true
+
+        //预编译
+        preDexLibraries = true
+
+        //线程数
+        threadCount = 8
+    }
     productFlavors {
     }
 }

@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.widget.Toast
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ClassAdapter
 import com.seven.simpleandroid.interfaces.IItemClickListener
@@ -48,6 +49,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("PermissionActivity"))
         data.add(ClassModel("SharedElementActivity"))
         data.add(ClassModel("NestedViewPagerActivity"))
+        data.add(ClassModel("LazyLoadingFragmentActivity"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
@@ -79,8 +81,15 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "PermissionActivity" -> PermissionActivity::class.java
             "SharedElementActivity" -> SharedElementActivity::class.java
             "NestedViewPagerActivity" -> NestedViewPagerActivity::class.java
+            "LazyLoadingFragmentActivity" -> LazyLoadingFragmentActivity::class.java
             else -> null
         }
+
+//        try {
+//            tempClass = Class.forName(model.name) as Class<out AppCompatActivity>?
+//        } catch (e : ClassNotFoundException) {
+//            Toast.makeText(this, e.localizedMessage, Toast.LENGTH_SHORT).show()
+//        }
 
         if (null == tempClass) {
             Snackbar.make(rvMain, model.name + " is coding!", Snackbar.LENGTH_SHORT).show()

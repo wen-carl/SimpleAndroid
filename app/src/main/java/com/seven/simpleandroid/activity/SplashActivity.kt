@@ -3,23 +3,20 @@ package com.seven.simpleandroid.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import kotlinx.coroutines.CommonPool
-import kotlinx.coroutines.android.UI
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        launch(context = CommonPool) {
+        GlobalScope.launch(context = Dispatchers.Default, block = {
             delay(1000)
 
-            launch(UI) {
+            launch(Dispatchers.Main) {
                 startActivity(Intent(this@SplashActivity, ListActivity::class.java))
                 finish()
             }
-        }
+        })
     }
 }

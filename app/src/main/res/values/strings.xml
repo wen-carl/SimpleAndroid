@@ -115,5 +115,6 @@
     <string name="title_activity_multiple_tab">MultipleTabActivity</string>
     <string name="title_activity_nested_view_pager">NestedViewPagerActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_lazy_loading_fragment">LazyLoadingFragmentActivity</string>
 
 </resources>
