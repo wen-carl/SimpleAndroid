@@ -1,24 +1,24 @@
 package com.seven.simpleandroid.activity
 
 import android.annotation.SuppressLint
-import android.content.*
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.net.wifi.ScanResult
 import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.UiThread
 import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.text.TextUtils
 import android.widget.EditText
-import android.widget.TextView
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.WifiDataAdapter
 import com.seven.simpleandroid.model.WifiItem
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_wifi.*
-import kotlinx.android.synthetic.main.nav_header_drawer1.*
 
 class WifiActivity : AppCompatActivity() {
 

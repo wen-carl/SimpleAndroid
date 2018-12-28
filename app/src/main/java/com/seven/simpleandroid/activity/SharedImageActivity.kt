@@ -1,25 +1,22 @@
 package com.seven.simpleandroid.activity
 
+import android.app.Activity
+import android.app.SharedElementCallback
 import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore.Images.Thumbnails.IMAGE_ID
 import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.CardView
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView.HitTestResult.IMAGE_TYPE
-import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.seven.simpleandroid.R
-import com.seven.simpleandroid.model.ImgSourceType
 import kotlinx.android.synthetic.main.activity_shared_image.*
-import kotlinx.android.synthetic.main.item_image_pager.*
-import java.io.File
+import kotlinx.android.synthetic.main.item_image_pager.view.*
 
 class SharedImageActivity : AppCompatActivity() {
 
@@ -47,7 +44,6 @@ class SharedImageActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 index = position
             }
-
         })
 
         index = intent.getIntExtra(INDEX, -1)
@@ -57,7 +53,24 @@ class SharedImageActivity : AppCompatActivity() {
             imagePager.currentItem = index
         }
 
-        ViewCompat.setTransitionName(imagePager, "image")
+        //ViewCompat.setTransitionName(imagePager, "image")
+
+        setEnterSharedElementCallback(object: SharedElementCallback() {
+            override fun onMapSharedElements(names: List<String>, sharedElements: MutableMap<String, View>) {
+                super.onMapSharedElements(names, sharedElements)
+
+                val card = imagePager.rootView.findViewWithTag<CardView>(index)
+                sharedElements[names[0]] = card.imageView
+            }
+        })
+    }
+
+    override fun finishAfterTransition() {
+        val intent = Intent()
+        intent.putExtra(INDEX, index)
+        setResult(Activity.RESULT_OK, intent)
+
+        super.finishAfterTransition()
     }
 
     fun toast(msg: String) {
@@ -69,14 +82,6 @@ class SharedImageActivity : AppCompatActivity() {
             onBackPressed()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-
-        val intent = Intent()
-        intent.putExtra(INDEX, index)
-        setResult(SharedElementActivity.REQUEST_CODE, intent)
     }
 
     class ImagePagerAdapter(val images: List<String>) : PagerAdapter() {
@@ -91,11 +96,13 @@ class SharedImageActivity : AppCompatActivity() {
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val view = LayoutInflater.from(container.context).inflate(R.layout.item_image_pager, container, false)
             container.addView(view)
-            val imageView = view.findViewById<ImageView>(R.id.imageView)
-            //ViewCompat.setTransitionName(imageView, "image")
+
+            val imageView = view.imageView
             Glide.with(view)
                 .load(images[position])
                 .into(imageView)
+
+            view.tag = position
 
             return view
         }

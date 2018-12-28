@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.interfaces.IOnItemClickListener
-import kotlinx.android.synthetic.main.item_image.view.*
 
 class ImageAdapter(var images: List<String>, var onItemClickListener: IOnItemClickListener<String, ImageHolder>?) : RecyclerView.Adapter<ImageAdapter.ImageHolder>() {
 

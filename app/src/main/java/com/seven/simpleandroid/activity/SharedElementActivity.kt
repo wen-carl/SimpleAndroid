@@ -1,25 +1,29 @@
 package com.seven.simpleandroid.activity
 
-import android.annotation.SuppressLint
-import android.app.Activity
+import android.app.SharedElementCallback
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.view.ViewCompat
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewTreeObserver
+import android.view.Window
+import android.widget.ImageView
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ImageAdapter
 import com.seven.simpleandroid.interfaces.IOnItemClickListener
 import kotlinx.android.synthetic.main.activity_shared_element.*
-import kotlinx.android.synthetic.main.activity_shared_element.view.*
 
 class SharedElementActivity : AppCompatActivity(), IOnItemClickListener<String, ImageAdapter.ImageHolder> {
 
+    private var index: Int = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shared_element)
 
@@ -28,9 +32,21 @@ class SharedElementActivity : AppCompatActivity(), IOnItemClickListener<String, 
         rvImage.layoutManager = GridLayoutManager(this, 2)
         val adapter = ImageAdapter(images, this)
         rvImage.adapter = adapter
+
+        setExitSharedElementCallback(object: SharedElementCallback() {
+            override fun onMapSharedElements(names: List<String>, sharedElements: MutableMap<String, View>) {
+                super.onMapSharedElements(names, sharedElements)
+
+                if (-1 != index) {
+                    val view = rvImage.layoutManager?.findViewByPosition(index)
+                    val view1 = view?.findViewById<ImageView>(R.id.imageView)!!
+                    sharedElements[names[0]] = view1
+                    index = -1
+                }
+            }
+        })
     }
 
-    @SuppressLint("RestrictedApi")
     override fun onItemClicked(holder: ImageAdapter.ImageHolder, model: String) {
         val intent = Intent(this, SharedImageActivity::class.java)
 
@@ -39,21 +55,24 @@ class SharedElementActivity : AppCompatActivity(), IOnItemClickListener<String, 
         startActivityForResult(intent, REQUEST_CODE, options.toBundle())
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    override fun onActivityReenter(resultCode: Int, data: Intent?) {
+        postponeEnterTransition()
 
-        if (REQUEST_CODE == requestCode) {
-            val index = data?.getIntExtra(SharedImageActivity.INDEX, -1)!!
-            val manager = rvImage.layoutManager as GridLayoutManager
-            val first = manager.findFirstVisibleItemPosition()
-            val last = manager.findLastVisibleItemPosition()
-            if (-1 != index ) {
-                rvImage.scrollToPosition(index)
-                val holder = rvImage.findViewHolderForAdapterPosition(index) as ImageAdapter.ImageHolder
+        index = data?.getIntExtra(SharedImageActivity.INDEX, -1)!!
+        val manager = rvImage.layoutManager as GridLayoutManager
+        val first = manager.findFirstVisibleItemPosition()
+        val last = manager.findLastVisibleItemPosition()
+        manager.scrollToPosition(index)
 
-                ViewCompat.setTransitionName(holder.imageView, "image")
+        window.decorView.viewTreeObserver.addOnPreDrawListener(object: ViewTreeObserver.OnPreDrawListener {
+            override fun onPreDraw(): Boolean {
+                window.decorView.viewTreeObserver.removeOnPreDrawListener(this)
+                startPostponedEnterTransition()
+                return false;
             }
-        }
+        })
+
+        super.onActivityReenter(resultCode, data)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

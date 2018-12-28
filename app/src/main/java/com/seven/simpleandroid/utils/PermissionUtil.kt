@@ -7,11 +7,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
-import android.support.annotation.RequiresApi
 import android.support.v4.app.ActivityCompat
-import android.support.v4.app.ActivityCompat.requestPermissions
-import android.support.v4.app.ActivityCompat.shouldShowRequestPermissionRationale
-import com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
 
 private const val PERMISSION_REQUEST_CODE = 1
 private const val ACTIVITY_REQUEST_CODE = 1

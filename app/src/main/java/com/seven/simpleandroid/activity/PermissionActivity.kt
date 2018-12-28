@@ -1,8 +1,8 @@
 package com.seven.simpleandroid.activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.utils.Permission

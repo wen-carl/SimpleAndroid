@@ -3,11 +3,9 @@ package com.seven.simpleandroid.fragment
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_plus_one.*

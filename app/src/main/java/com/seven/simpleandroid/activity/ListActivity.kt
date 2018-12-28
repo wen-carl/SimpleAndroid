@@ -6,12 +6,10 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.widget.Toast
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ClassAdapter
 import com.seven.simpleandroid.interfaces.IItemClickListener
 import com.seven.simpleandroid.model.ClassModel
-import com.seven.simpleandroid.utils.Permission
 import com.seven.simpleandroid.widget.ItemDecoration
 import kotlinx.android.synthetic.main.list_activity.*
 
@@ -50,6 +48,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("SharedElementActivity"))
         data.add(ClassModel("NestedViewPagerActivity"))
         data.add(ClassModel("LazyLoadingFragmentActivity"))
+        data.add(ClassModel("TabbedActivity"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = LinearLayoutManager(this)
@@ -82,6 +81,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "SharedElementActivity" -> SharedElementActivity::class.java
             "NestedViewPagerActivity" -> NestedViewPagerActivity::class.java
             "LazyLoadingFragmentActivity" -> LazyLoadingFragmentActivity::class.java
+            "TabbedActivity" -> TabbedActivity::class.java
             else -> null
         }
 
