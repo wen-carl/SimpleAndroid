@@ -1,6 +1,6 @@
 package com.seven.simpleandroid.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ import com.seven.simpleandroid.model.ImgModel
 import com.seven.simpleandroid.model.ImgSourceType
 import java.io.File
 
-class MultipleTabAdapter(val data: List<ImgModel>) : RecyclerView.Adapter<MultipleTabAdapter.ViewHolder>() {
+class MultipleTabAdapter(val data: List<ImgModel>) : androidx.recyclerview.widget.RecyclerView.Adapter<MultipleTabAdapter.ViewHolder>() {
 
     var onItemClickListener: IOnItemClickListener? = null
 
@@ -38,7 +38,7 @@ class MultipleTabAdapter(val data: List<ImgModel>) : RecyclerView.Adapter<Multip
         fun onItemClicked(model: ImgModel, holder: ViewHolder)
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         val img = itemView.findViewById<ImageView>(R.id.img)
         val tvInfo = itemView.findViewById<TextView>(R.id.tv_info)

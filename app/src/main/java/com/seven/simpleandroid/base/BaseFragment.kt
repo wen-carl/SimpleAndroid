@@ -1,10 +1,10 @@
 package com.seven.simpleandroid.base
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.View
 
-open class BaseFragment : Fragment() {
+open class BaseFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         val TAG = BaseFragment::class.java.simpleName

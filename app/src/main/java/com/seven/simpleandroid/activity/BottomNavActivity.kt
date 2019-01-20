@@ -1,9 +1,9 @@
 package com.seven.simpleandroid.activity
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import com.seven.simpleandroid.R
@@ -13,19 +13,29 @@ import com.seven.simpleandroid.extensions.enableShiftMode
 import kotlinx.android.synthetic.main.activity_bottom_nav.*
 
 
-class BottomNavActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
+class BottomNavActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, androidx.viewpager.widget.ViewPager.OnPageChangeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_nav)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        navigation.enableMenuItemShiftMode(false)
+        //navigation.enableMenuItemShiftMode(false)
         navigation.enableShiftMode(false)
         navigation.setOnNavigationItemSelectedListener(this)
 
         viewpager.adapter = BottomNavFragmentAdapter(supportFragmentManager, listOf("Home", "Dashboard", "Notifications", "Share"))
         viewpager.addOnPageChangeListener(this)
         viewpager.setPageTransformer(true, DepthPageTransformer())
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        when (item?.itemId) {
+            android.R.id.home -> super.onBackPressed()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -64,7 +74,7 @@ class BottomNavActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
 private const val MIN_SCALE = 0.85f
 private const val MIN_ALPHA = 0.5f
 
-class ZoomOutPageTransformer : ViewPager.PageTransformer {
+class ZoomOutPageTransformer : androidx.viewpager.widget.ViewPager.PageTransformer {
 
     override fun transformPage(view: View, position: Float) {
         val pageWidth = view.width
@@ -100,7 +110,7 @@ class ZoomOutPageTransformer : ViewPager.PageTransformer {
     }
 }
 
-class DepthPageTransformer : ViewPager.PageTransformer {
+class DepthPageTransformer : androidx.viewpager.widget.ViewPager.PageTransformer {
 
     override fun transformPage(view: View, position: Float) {
         val pageWidth = view.width

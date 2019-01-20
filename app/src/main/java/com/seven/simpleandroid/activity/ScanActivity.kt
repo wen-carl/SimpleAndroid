@@ -1,7 +1,7 @@
 package com.seven.simpleandroid.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.KeyEvent
 import com.journeyapps.barcodescanner.CaptureManager
 import com.seven.simpleandroid.R

@@ -3,7 +3,7 @@ package com.seven.simpleandroid.fragment
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +22,7 @@ private const val TITLE = "title"
  * create an instance of this fragment.
  *
  */
-class TabFragment : Fragment() {
+class TabFragment : androidx.fragment.app.Fragment() {
 
     private var title: String? = null
     private var listener: OnFragmentInteractionListener? = null

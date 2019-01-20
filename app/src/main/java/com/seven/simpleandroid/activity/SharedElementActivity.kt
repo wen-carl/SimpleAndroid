@@ -4,10 +4,10 @@ import android.app.SharedElementCallback
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import android.support.v4.app.ActivityOptionsCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityOptionsCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewTreeObserver
@@ -29,7 +29,7 @@ class SharedElementActivity : AppCompatActivity(), IOnItemClickListener<String, 
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        rvImage.layoutManager = GridLayoutManager(this, 2)
+        rvImage.layoutManager = androidx.recyclerview.widget.GridLayoutManager(this, 2)
         val adapter = ImageAdapter(images, this)
         rvImage.adapter = adapter
 
@@ -59,7 +59,7 @@ class SharedElementActivity : AppCompatActivity(), IOnItemClickListener<String, 
         postponeEnterTransition()
 
         index = data?.getIntExtra(SharedImageActivity.INDEX, -1)!!
-        val manager = rvImage.layoutManager as GridLayoutManager
+        val manager = rvImage.layoutManager as androidx.recyclerview.widget.GridLayoutManager
         val first = manager.findFirstVisibleItemPosition()
         val last = manager.findLastVisibleItemPosition()
         manager.scrollToPosition(index)

@@ -2,14 +2,14 @@ package com.seven.simpleandroid.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.design.widget.TabLayout.BaseOnTabSelectedListener
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.BaseOnTabSelectedListener
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
@@ -72,9 +72,9 @@ class TabbedActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    inner class SectionsPagerAdapter(fm: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {
 
-        override fun getItem(position: Int): Fragment {
+        override fun getItem(position: Int): androidx.fragment.app.Fragment {
             return PlaceholderFragment.newInstance(position)
         }
 
@@ -87,7 +87,7 @@ class TabbedActivity : AppCompatActivity() {
         }
     }
 
-    class PlaceholderFragment : Fragment(), BaseOnTabSelectedListener<TabLayout.Tab> {
+    class PlaceholderFragment : androidx.fragment.app.Fragment(), BaseOnTabSelectedListener<TabLayout.Tab> {
 
         companion object {
 
@@ -102,7 +102,7 @@ class TabbedActivity : AppCompatActivity() {
             }
         }
 
-        private lateinit var recyclerView : RecyclerView
+        private lateinit var recyclerView : androidx.recyclerview.widget.RecyclerView
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
             return inflater.inflate(R.layout.fragment_tabbed, container, false)
@@ -129,7 +129,7 @@ class TabbedActivity : AppCompatActivity() {
             val container = view.nestedScrollContainer
             recyclerView.layoutParams.height = height
 
-            recyclerView.layoutManager = LinearLayoutManager(view.context, RecyclerView.VERTICAL, false)
+            recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(view.context, androidx.recyclerview.widget.RecyclerView.VERTICAL, false)
             recyclerView.adapter = ImageRecyclerViewAdapter(getList(0))
 
             val tablayout = view.findViewById<TabLayout>(R.id.tabLayout2)
@@ -168,7 +168,7 @@ class TabbedActivity : AppCompatActivity() {
         }
     }
 
-    class ImageRecyclerViewAdapter(var data: List<String>) : RecyclerView.Adapter<ImageHolder>() {
+    class ImageRecyclerViewAdapter(var data: List<String>) : androidx.recyclerview.widget.RecyclerView.Adapter<ImageHolder>() {
         override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ImageHolder {
             val itemView = LayoutInflater.from(p0.context).inflate(R.layout.item_multiple_tab, p0, false)
             return ImageHolder(itemView)
@@ -187,7 +187,7 @@ class TabbedActivity : AppCompatActivity() {
         }
     }
 
-    class ImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ImageHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         var img = itemView.img
         var tv = itemView.tv_info
     }

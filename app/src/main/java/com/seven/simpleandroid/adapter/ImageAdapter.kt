@@ -1,6 +1,6 @@
 package com.seven.simpleandroid.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.interfaces.IOnItemClickListener
 
-class ImageAdapter(var images: List<String>, var onItemClickListener: IOnItemClickListener<String, ImageHolder>?) : RecyclerView.Adapter<ImageAdapter.ImageHolder>() {
+class ImageAdapter(var images: List<String>, var onItemClickListener: IOnItemClickListener<String, ImageHolder>?) : androidx.recyclerview.widget.RecyclerView.Adapter<ImageAdapter.ImageHolder>() {
 
     constructor(images: List<String>) : this(images, null)
 
@@ -33,7 +33,7 @@ class ImageAdapter(var images: List<String>, var onItemClickListener: IOnItemCli
         holder.bind(images[position])
     }
 
-    class ImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ImageHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         val imageView = itemView.findViewById<ImageView>(R.id.imageView)!!
 
         fun bind(url: String) {

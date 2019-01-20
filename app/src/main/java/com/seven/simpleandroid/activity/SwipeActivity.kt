@@ -2,9 +2,9 @@ package com.seven.simpleandroid.activity
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
 import com.seven.simpleandroid.R
@@ -37,7 +37,7 @@ class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         }
 
         val adapter = ClassAdapter(this, data)
-        rvSwipe.layoutManager = LinearLayoutManager(this)
+        rvSwipe.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         rvSwipe.addItemDecoration(ItemDecoration(this, drawableId = R.drawable.list_divider))
         rvSwipe.adapter = adapter
 

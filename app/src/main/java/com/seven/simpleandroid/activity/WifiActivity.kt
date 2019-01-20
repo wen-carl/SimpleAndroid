@@ -9,10 +9,10 @@ import android.net.wifi.ScanResult
 import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
 import android.os.Bundle
-import android.support.annotation.UiThread
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.annotation.UiThread
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.EditText
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.WifiDataAdapter
@@ -77,7 +77,7 @@ class WifiActivity : AppCompatActivity() {
                     "SSID: ${info.ssid} \nBSSID: ${info.bssid} \nIP: ${intToIp(info.ipAddress)} \nMAC: ${info.macAddress} \nRSSI: ${info.rssi} \n\n${info}"
         }
 
-        rv_wifi.layoutManager = LinearLayoutManager(this)
+        rv_wifi.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         val adapter = WifiDataAdapter(getWifiItems(mManager.scanResults))
         rv_wifi.adapter = adapter
 

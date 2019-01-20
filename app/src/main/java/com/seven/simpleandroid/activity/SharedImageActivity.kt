@@ -4,10 +4,10 @@ import android.app.Activity
 import android.app.SharedElementCallback
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.CardView
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -32,7 +32,7 @@ class SharedImageActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         imagePager.adapter = ImagePagerAdapter(SharedElementActivity.images)
-        imagePager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        imagePager.addOnPageChangeListener(object : androidx.viewpager.widget.ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {}
 
             override fun onPageScrolled(
@@ -59,7 +59,7 @@ class SharedImageActivity : AppCompatActivity() {
             override fun onMapSharedElements(names: List<String>, sharedElements: MutableMap<String, View>) {
                 super.onMapSharedElements(names, sharedElements)
 
-                val card = imagePager.rootView.findViewWithTag<CardView>(index)
+                val card = imagePager.rootView.findViewWithTag<androidx.cardview.widget.CardView>(index)
                 sharedElements[names[0]] = card.imageView
             }
         })
@@ -84,7 +84,7 @@ class SharedImageActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    class ImagePagerAdapter(val images: List<String>) : PagerAdapter() {
+    class ImagePagerAdapter(val images: List<String>) : androidx.viewpager.widget.PagerAdapter() {
         override fun isViewFromObject(view: View, `object`: Any): Boolean {
             return view == `object`
         }

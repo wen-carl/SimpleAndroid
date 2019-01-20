@@ -2,7 +2,7 @@ package com.seven.simpleandroid.activity
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.fragment.PlusOneFragment

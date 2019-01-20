@@ -4,29 +4,29 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 
-class ItemDecoration(val context: Context, var spanCount: Int = 0, var drawable: Drawable = context.getDrawable(android.R.drawable.divider_horizontal_bright)): RecyclerView.ItemDecoration() {
+class ItemDecoration(val context: Context, var spanCount: Int = 0, var drawable: Drawable = context.getDrawable(android.R.drawable.divider_horizontal_bright)): androidx.recyclerview.widget.RecyclerView.ItemDecoration() {
 
     init { }
 
     constructor(context: Context, spanCount: Int = 0, drawableId: Int) : this(context, spanCount, context.getDrawable(drawableId))
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(outRect: Rect, view: View, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
         super.getItemOffsets(outRect, view, parent, state)
 
         val manager = parent.layoutManager
         if (manager != null) {
             when (manager) {
-                is GridLayoutManager -> {
+                is androidx.recyclerview.widget.GridLayoutManager -> {
                     outRect.top = drawable.intrinsicHeight
                     outRect.left = drawable.intrinsicWidth
                 }
-                is LinearLayoutManager -> {
-                    if (RecyclerView.VERTICAL == manager.orientation) {
+                is androidx.recyclerview.widget.LinearLayoutManager -> {
+                    if (androidx.recyclerview.widget.RecyclerView.VERTICAL == manager.orientation) {
                         outRect.top = drawable.intrinsicHeight
                     } else {
                         outRect.left = drawable.intrinsicWidth
@@ -37,7 +37,7 @@ class ItemDecoration(val context: Context, var spanCount: Int = 0, var drawable:
         }
     }
 
-    override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+    override fun onDraw(c: Canvas, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
         super.onDraw(c, parent, state)
 
         var left = 0
@@ -47,12 +47,12 @@ class ItemDecoration(val context: Context, var spanCount: Int = 0, var drawable:
         val manager = parent.layoutManager
         if (manager != null) {
             when (manager) {
-                is GridLayoutManager -> {
+                is androidx.recyclerview.widget.GridLayoutManager -> {
                     val rowCount: Int
                     val columnCount: Int
                     var rowIndex: Int
                     var columnIndex: Int
-                    if (RecyclerView.VERTICAL == manager.orientation) {
+                    if (androidx.recyclerview.widget.RecyclerView.VERTICAL == manager.orientation) {
                         columnCount = spanCount
                         rowCount = parent.childCount / spanCount + (if (parent.childCount % spanCount == 0) 0 else 1)
 
@@ -109,8 +109,8 @@ class ItemDecoration(val context: Context, var spanCount: Int = 0, var drawable:
                         }
                     }
                 }
-                is LinearLayoutManager -> {
-                    if (RecyclerView.VERTICAL == manager.orientation) {
+                is androidx.recyclerview.widget.LinearLayoutManager -> {
+                    if (androidx.recyclerview.widget.RecyclerView.VERTICAL == manager.orientation) {
                         left = parent.paddingLeft
                         right = parent.width - parent.paddingRight
                         for (i in 0 until parent.childCount) {

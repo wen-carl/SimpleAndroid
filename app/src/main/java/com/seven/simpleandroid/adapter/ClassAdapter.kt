@@ -1,7 +1,7 @@
 package com.seven.simpleandroid.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.seven.simpleandroid.R
 import com.seven.simpleandroid.interfaces.IItemClickListener
 import com.seven.simpleandroid.model.ClassModel
 
-class ClassAdapter(var context: Context, var data: MutableList<ClassModel> = mutableListOf()) : RecyclerView.Adapter<ClassViewHolder>() {
+class ClassAdapter(var context: Context, var data: MutableList<ClassModel> = mutableListOf()) : androidx.recyclerview.widget.RecyclerView.Adapter<ClassViewHolder>() {
 
     var itemClick: IItemClickListener<ClassModel>? = null
 
@@ -51,7 +51,7 @@ class ClassAdapter(var context: Context, var data: MutableList<ClassModel> = mut
     }
 }
 
-class ClassViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class ClassViewHolder(itemView: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
     var name: TextView = itemView.findViewById(R.id.txt_name)
     var detail: TextView = itemView.findViewById(R.id.txt_detail)
 }

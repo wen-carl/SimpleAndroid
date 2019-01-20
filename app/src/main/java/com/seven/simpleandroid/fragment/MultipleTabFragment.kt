@@ -2,8 +2,8 @@ package com.seven.simpleandroid.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -56,7 +56,7 @@ class MultipleTabFragment : Fragment(), MultipleTabAdapter.IOnItemClickListener 
         log("onDestroy")
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         log("onAttach")
     }

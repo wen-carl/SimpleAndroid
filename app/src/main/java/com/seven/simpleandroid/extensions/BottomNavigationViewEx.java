@@ -1,9 +1,9 @@
 package com.seven.simpleandroid.extensions;
 
 import android.annotation.SuppressLint;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
-import android.support.design.widget.BottomNavigationView;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomNavigationViewEx {
     public static BottomNavigationMenuView getMenuView(BottomNavigationView navView) throws NoSuchFieldException, IllegalAccessException {

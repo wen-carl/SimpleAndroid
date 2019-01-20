@@ -1,7 +1,7 @@
 package com.seven.simpleandroid.adapter
 
 import android.graphics.Color
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.model.WifiItem
 
-class WifiDataAdapter(var data: List<WifiItem>) : RecyclerView.Adapter<WifiDataAdapter.WifiHolder>() {
+class WifiDataAdapter(var data: List<WifiItem>) : androidx.recyclerview.widget.RecyclerView.Adapter<WifiDataAdapter.WifiHolder>() {
 
     private var onItemClickListener: IOnItemClickListener? = null
     private var onItemLongClickListener: IOnItemLongClickListener? = null
@@ -58,7 +58,7 @@ class WifiDataAdapter(var data: List<WifiItem>) : RecyclerView.Adapter<WifiDataA
         holder.bind(data[position])
     }
 
-    class WifiHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class WifiHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         val tvInfo = itemView.findViewById<TextView>(R.id.tv_info)
         val tvSecurity = itemView.findViewById<TextView>(R.id.tv_security)
         val ivWifi = itemView.findViewById<ImageView>(R.id.iv_wifi)

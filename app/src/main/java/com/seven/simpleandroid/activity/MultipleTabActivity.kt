@@ -1,11 +1,11 @@
 package com.seven.simpleandroid.activity
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.seven.simpleandroid.R
@@ -60,9 +60,9 @@ class MultipleTabActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    inner class SectionsPagerAdapter(fm: FragmentManager, val data: List<String>) : FragmentPagerAdapter(fm) {
+    inner class SectionsPagerAdapter(fm: androidx.fragment.app.FragmentManager, val data: List<String>) : androidx.fragment.app.FragmentPagerAdapter(fm) {
 
-        override fun getItem(position: Int): Fragment {
+        override fun getItem(position: Int): androidx.fragment.app.Fragment {
             return MultipleTabFragment.newInstance(data[position])
         }
 

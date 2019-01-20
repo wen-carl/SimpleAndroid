@@ -1,11 +1,11 @@
 package com.seven.simpleandroid.activity
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.appcompat.app.AppCompatActivity
 import android.view.*
 import com.seven.simpleandroid.R
 import kotlinx.android.synthetic.main.activity_nested_view_pager.*
@@ -75,9 +75,9 @@ class NestedViewPagerActivity : AppCompatActivity() {
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    inner class SectionsPagerAdapter(fm: FragmentManager, private val data: List<String>) : FragmentPagerAdapter(fm) {
+    inner class SectionsPagerAdapter(fm: androidx.fragment.app.FragmentManager, private val data: List<String>) : androidx.fragment.app.FragmentPagerAdapter(fm) {
 
-        override fun getItem(position: Int): Fragment {
+        override fun getItem(position: Int): androidx.fragment.app.Fragment {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position)
@@ -95,7 +95,7 @@ class NestedViewPagerActivity : AppCompatActivity() {
     /**
      * A placeholder fragment containing a simple view.
      */
-    class PlaceholderFragment : Fragment() {
+    class PlaceholderFragment : androidx.fragment.app.Fragment() {
 
         companion object {
             /**
@@ -129,9 +129,9 @@ class NestedViewPagerActivity : AppCompatActivity() {
             view.childTabLayout.setupWithViewPager(view.childViewPager)
         }
 
-        inner class ChildPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+        inner class ChildPagerAdapter(fm: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {
 
-            override fun getItem(position: Int): Fragment {
+            override fun getItem(position: Int): androidx.fragment.app.Fragment {
                 // getItem is called to instantiate the fragment for the given page.
                 // Return a PlaceholderFragment (defined as a static inner class below).
                 return ChildFragment.newInstance(position)
@@ -147,7 +147,7 @@ class NestedViewPagerActivity : AppCompatActivity() {
         }
     }
 
-    class ChildFragment : Fragment() {
+    class ChildFragment : androidx.fragment.app.Fragment() {
 
         companion object {
 

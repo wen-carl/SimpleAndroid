@@ -3,7 +3,7 @@ package com.seven.simpleandroid.activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import com.google.zxing.integration.android.IntentIntegrator
 import com.seven.simpleandroid.R
