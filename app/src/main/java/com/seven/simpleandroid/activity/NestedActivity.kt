@@ -2,11 +2,11 @@ package com.seven.simpleandroid.activity
 
 import android.net.Uri
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
-import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.TabFragmentAdapter
 import com.seven.simpleandroid.fragment.TabFragment

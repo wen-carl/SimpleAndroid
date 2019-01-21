@@ -3,8 +3,6 @@ package com.seven.simpleandroid.utils;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import androidx.annotation.ColorInt;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.google.zxing.BarcodeFormat;
@@ -17,6 +15,9 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import java.util.Hashtable;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
 
 public class QRCodeUtils {
     /**

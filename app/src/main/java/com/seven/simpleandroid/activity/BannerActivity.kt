@@ -2,8 +2,8 @@ package com.seven.simpleandroid.activity
 
 import android.content.Context
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.seven.simpleandroid.R
 import com.youth.banner.BannerConfig

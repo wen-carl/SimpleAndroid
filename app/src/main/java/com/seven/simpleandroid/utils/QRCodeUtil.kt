@@ -3,8 +3,8 @@ package com.seven.simpleandroid.utils
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
-import androidx.annotation.ColorInt
 import android.text.TextUtils
+import androidx.annotation.ColorInt
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.MultiFormatWriter

@@ -1,8 +1,8 @@
 package com.seven.simpleandroid.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.MotionEvent
+import androidx.appcompat.app.AppCompatActivity
 import com.seven.simpleandroid.R
 import kotlinx.android.synthetic.main.activity_move.*
 

@@ -1,7 +1,6 @@
 package com.seven.simpleandroid.base
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 
 open class BaseFragment : androidx.fragment.app.Fragment() {

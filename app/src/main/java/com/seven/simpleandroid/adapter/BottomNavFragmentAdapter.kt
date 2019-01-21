@@ -1,8 +1,5 @@
 package com.seven.simpleandroid.adapter
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import com.seven.simpleandroid.fragment.BottomNavFragment
 
 class BottomNavFragmentAdapter(fm: androidx.fragment.app.FragmentManager, val data: List<String>) : androidx.fragment.app.FragmentPagerAdapter(fm) {

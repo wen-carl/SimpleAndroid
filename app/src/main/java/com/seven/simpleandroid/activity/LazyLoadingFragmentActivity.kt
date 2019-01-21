@@ -1,12 +1,10 @@
 package com.seven.simpleandroid.activity
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentPagerAdapter
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.base.BaseFragment
 import kotlinx.android.synthetic.main.activity_lazy_loading_fragment.*

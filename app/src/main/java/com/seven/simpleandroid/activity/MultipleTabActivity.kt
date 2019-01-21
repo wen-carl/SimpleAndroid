@@ -1,13 +1,10 @@
 package com.seven.simpleandroid.activity
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.fragment.MultipleTabFragment
 import kotlinx.android.synthetic.main.activity_multiple_tab.*

@@ -1,8 +1,8 @@
 package com.seven.simpleandroid.extensions;
 
-import androidx.annotation.NonNull;
-
 import java.lang.reflect.Field;
+
+import androidx.annotation.NonNull;
 
 public class ReflectEx {
     public static <T> void setField(T obj, @NonNull String field, Object value) throws NoSuchFieldException, IllegalAccessException {

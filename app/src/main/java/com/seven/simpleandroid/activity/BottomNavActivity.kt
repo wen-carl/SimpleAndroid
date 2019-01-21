@@ -1,14 +1,12 @@
 package com.seven.simpleandroid.activity
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.BottomNavFragmentAdapter
-import com.seven.simpleandroid.extensions.enableMenuItemShiftMode
 import com.seven.simpleandroid.extensions.enableShiftMode
 import kotlinx.android.synthetic.main.activity_bottom_nav.*
 
@@ -20,7 +18,6 @@ class BottomNavActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
         setContentView(R.layout.activity_bottom_nav)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        //navigation.enableMenuItemShiftMode(false)
         navigation.enableShiftMode(false)
         navigation.setOnNavigationItemSelectedListener(this)
 

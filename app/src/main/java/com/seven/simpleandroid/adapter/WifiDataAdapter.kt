@@ -1,7 +1,6 @@
 package com.seven.simpleandroid.adapter
 
 import android.graphics.Color
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

@@ -9,11 +9,10 @@ import android.net.wifi.ScanResult
 import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
 import android.os.Bundle
+import android.widget.EditText
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import android.widget.EditText
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.WifiDataAdapter
 import com.seven.simpleandroid.model.WifiItem

@@ -2,17 +2,14 @@ package com.seven.simpleandroid.activity
 
 import android.app.SharedElementCallback
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityOptionsCompat
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.Window
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ImageAdapter
 import com.seven.simpleandroid.interfaces.IOnItemClickListener

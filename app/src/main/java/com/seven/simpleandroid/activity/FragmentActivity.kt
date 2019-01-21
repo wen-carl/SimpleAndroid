@@ -2,8 +2,8 @@ package com.seven.simpleandroid.activity
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.fragment.PlusOneFragment
 import com.seven.simpleandroid.utils.LogUtils

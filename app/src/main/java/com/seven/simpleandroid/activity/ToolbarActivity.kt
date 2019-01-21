@@ -1,9 +1,9 @@
 package com.seven.simpleandroid.activity
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.seven.simpleandroid.R
 import kotlinx.android.synthetic.main.activity_toolbar.*
 
