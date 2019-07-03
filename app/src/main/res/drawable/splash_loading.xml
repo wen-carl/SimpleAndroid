@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:drawable="@drawable/ic_loading"
+    tools:targetApi="lollipop">
 
-</selector>
+    <!--android:animation="@animator/rotation"-->
+    <target
+        android:name="rotation"
+        android:animation="@anim/rotation"
+        />
+</animated-vector>

@@ -1,5 +1,6 @@
 package com.seven.simpleandroid.activity
 
+import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.seven.simpleandroid.R
 import kotlinx.android.synthetic.main.activity_drawer1.*
 import kotlinx.android.synthetic.main.app_bar_drawer1.*
+import kotlinx.android.synthetic.main.content_drawer1.*
 
 class Drawer1Activity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -35,6 +37,11 @@ class Drawer1Activity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        val drawable = imageView2.drawable
+        if (drawable is Animatable) {
+            drawable.start()
+        }
     }
 
     override fun onBackPressed() {

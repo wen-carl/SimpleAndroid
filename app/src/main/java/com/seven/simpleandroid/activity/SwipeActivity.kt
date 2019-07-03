@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.NestedScrollingChild3
 import com.google.android.material.snackbar.Snackbar
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ClassAdapter
@@ -12,9 +13,7 @@ import com.seven.simpleandroid.interfaces.IItemClickListener
 import com.seven.simpleandroid.model.ClassModel
 import com.seven.simpleandroid.widget.ItemDecoration
 import kotlinx.android.synthetic.main.activity_swipe.*
-import kotlinx.coroutines.CommonPool
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.util.*
 
 class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
@@ -45,13 +44,13 @@ class SwipeActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
 
     private fun bindEvent() {
         swipeRefresh.setOnRefreshListener {
-            launch(CommonPool) {
+            GlobalScope.launch(context = Dispatchers.Default, block = {
                 delay(3000)
-                runOnUiThread({
+                runOnUiThread {
                     loadMore()
                     swipeRefresh.isRefreshing = false
-                })
-            }
+                }
+            })
         }
 
         val adapter = rvSwipe.adapter as ClassAdapter
