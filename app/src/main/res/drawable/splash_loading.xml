@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-vector
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:drawable="@drawable/ic_loading"
-    tools:targetApi="lollipop">
+<!--<animated-vector-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:drawable="@drawable/ic_loading"-->
+    <!--tools:targetApi="lollipop">-->
 
-    <!--android:animation="@animator/rotation"-->
-    <target
-        android:name="rotation"
-        android:animation="@anim/rotation"
-        />
-</animated-vector>
+    <!--<target-->
+        <!--android:name="loading"-->
+        <!--android:animation="@animator/rotation"/>-->
+
+<!--</animated-vector>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/white" />
+
+    <item android:height="64dp"
+        android:width="64dp"
+        android:gravity="center"
+        android:id="@+id/animated_loading">
+        <animated-vector
+            xmlns:tools="http://schemas.android.com/tools"
+            android:drawable="@drawable/ic_loading"
+            tools:targetApi="lollipop">
+
+            <target
+                android:name="loading"
+                android:animation="@animator/rotation"/>
+
+        </animated-vector>
+    </item>
+
+    <item android:id="@+id/loading_text"
+        android:drawable="@drawable/ic_splash_text"
+        android:gravity="center"
+        android:top="128dp">
+
+    </item>
+</layer-list>

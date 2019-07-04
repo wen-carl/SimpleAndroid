@@ -1,6 +1,7 @@
 package com.seven.simpleandroid.activity
 
 import android.graphics.drawable.Animatable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -38,9 +39,12 @@ class Drawer1Activity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        val drawable = imageView2.drawable
-        if (drawable is Animatable) {
-            drawable.start()
+        val back = imageView2.drawable
+        if (back is LayerDrawable) {
+            val vectorDrawable = back.findDrawableByLayerId(R.id.animated_loading)
+            if (vectorDrawable is Animatable) {
+                vectorDrawable.start()
+            }
         }
     }
 
