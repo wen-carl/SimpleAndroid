@@ -71,7 +71,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "ToolbarActivity" -> ToolbarActivity::class.java
             "NestedActivity" -> NestedActivity::class.java
             "FragmentActivity" -> FragmentActivity::class.java
-            "MultipleTabActivity" ->MultipleTabActivity::class.java
+            "MultipleTabActivity" -> MultipleTabActivity::class.java
             "BannerActivity" -> BannerActivity::class.java
             "MoveActivity" -> MoveActivity::class.java
             "QRCodeActivity" -> QRCodeActivity::class.java

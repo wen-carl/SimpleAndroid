@@ -67,7 +67,8 @@ class Drawer1Activity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> {}
+            R.id.action_settings -> {
+            }
         }
 
         return super.onOptionsItemSelected(item)

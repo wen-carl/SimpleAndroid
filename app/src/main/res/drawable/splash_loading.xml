@@ -11,7 +11,9 @@
 
 <!--</animated-vector>-->
 
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <item android:drawable="@android:color/white" />
 
     <item android:height="64dp"
@@ -19,7 +21,6 @@
         android:gravity="center"
         android:id="@+id/animated_loading">
         <animated-vector
-            xmlns:tools="http://schemas.android.com/tools"
             android:drawable="@drawable/ic_loading"
             tools:targetApi="lollipop">
 
