@@ -5,9 +5,9 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.BottomNavFragmentAdapter
-import com.seven.simpleandroid.extensions.enableShiftMode
 import kotlinx.android.synthetic.main.activity_bottom_nav.*
 
 
@@ -18,10 +18,15 @@ class BottomNavActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
         setContentView(R.layout.activity_bottom_nav)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        navigation.enableShiftMode(false)
+        //navigation.enableShiftMode(false)
+        //navigation.isItemHorizontalTranslationEnabled = false
+        navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+        val badge = navigation.showBadge(R.id.navigation_share)
+        badge.number = 100
+        //badge.badgeTextColor = 0xFF0000
         navigation.setOnNavigationItemSelectedListener(this)
 
-        viewpager.adapter = BottomNavFragmentAdapter(supportFragmentManager, listOf("Home", "Dashboard", "Notifications", "Share"))
+        viewpager.adapter = BottomNavFragmentAdapter(supportFragmentManager, listOf("Home", "Dashboard", "Notifications", "Share", "Share1"))
         viewpager.addOnPageChangeListener(this)
         viewpager.setPageTransformer(true, DepthPageTransformer())
     }
@@ -42,6 +47,7 @@ class BottomNavActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
             R.id.navigation_dashboard -> 1
             R.id.navigation_notifications -> 2
             R.id.navigation_share -> 3
+            R.id.navigation_share1 -> 4
             else -> 0
         }
 
