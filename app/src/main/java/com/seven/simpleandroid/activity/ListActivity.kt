@@ -48,6 +48,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         data.add(ClassModel("NestedViewPagerActivity"))
         data.add(ClassModel("LazyLoadingFragmentActivity"))
         data.add(ClassModel("TabbedActivity"))
+        data.add(ClassModel("PrintActivity"))
 
         val adapter = ClassAdapter(this, data)
         rvMain.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
@@ -81,6 +82,7 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
             "NestedViewPagerActivity" -> NestedViewPagerActivity::class.java
             "LazyLoadingFragmentActivity" -> LazyLoadingFragmentActivity::class.java
             "TabbedActivity" -> TabbedActivity::class.java
+            "PrintActivity" -> PrintActivity::class.java
             else -> null
         }
 
