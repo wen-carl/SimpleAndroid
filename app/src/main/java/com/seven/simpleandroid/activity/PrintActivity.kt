@@ -2,10 +2,6 @@ package com.seven.simpleandroid.activity
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.CancellationSignal
-import android.os.Environment
-import android.os.ParcelFileDescriptor
 import android.print.PageRange
 import android.print.PrintAttributes
 import android.print.PrintDocumentAdapter
@@ -21,15 +17,21 @@ import android.print.pdf.PrintedPdfDocument
 import android.graphics.pdf.PdfDocument
 import android.graphics.Matrix
 import android.graphics.Paint
+import android.os.*
 import java.io.*
-
+import android.os.Bundle
+import android.widget.Toast
+import android.os.ParcelFileDescriptor
+import java.lang.reflect.InvocationHandler
+//import com.android.dx.stock.ProxyBuilder
 
 class PrintActivity : AppCompatActivity() {
 
     private val htmlStr = "<!DOCTYPE html><html><head><title>这是个标题</title></head><body><h1>这是个标题1</h1><h1>这是一个一个简单的HTML</h1><p>Hello World！</p><h1>这是个标题2</h1><h1>这是一个一个简单的HTML</h1><p>Hello World！</p><h1>这是个标题3</h1><h1>这是一个一个简单的HTML</h1><p>Hello World！</p><h1>这是个标题4</h1><h1>这是一个一个简单的HTML</h1><p>Hello World！</p><h1>这是个标题5</h1><h1>这是一个一个简单的HTML</h1><p>Hello World！</p><h1>这是个标题6</h1><h1>这是一个一个简单的HTML</h1><p>Hello World！</p><h1>这是个标题7</h1><h1>这是一个一个简单的HTML</h1><p>Hello World！</p><h1>这是个标题8</h1><h1>这是一个一个简单的HTML</h1><p>Hello World！</p><h1>这是个标题9</h1><h1>这是一个一个简单的HTML</h1><p>Hello World！</p><h1>这是个标题10</h1><h1>这是一个一个简单的HTML</h1><p>Hello World！</p></body></html>"
 
     private val filePath = Environment.getExternalStorageDirectory().absolutePath + "/Download/Seven HTML.pdf"
-    //Environment.ExternalStorageDirectory.AbsolutePath + "/Download/test.pdf"
+    private val PDFfilePath1 = Environment.getExternalStorageDirectory().absolutePath + "/Download/convert1.pdf"
+    private val PDFfilePath2 = Environment.getExternalStorageDirectory().absolutePath + "/Download/convert2.pdf"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,10 +45,143 @@ class PrintActivity : AppCompatActivity() {
         btnDoc.setOnClickListener {
             printDoc(filePath)
         }
+
+        btnConvert1.setOnClickListener {
+            //convertHtmlToPDF(0, htmlStr)
+        }
+
+        btnConvert2.setOnClickListener {
+            //printDoc(filePath)
+        }
     }
 
+    /*
+    private fun convertHtmlToPDF(type: Int, html: String) {
+        val webView = WebView(this)
+        webView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                return false
+            }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                val path = if (type == 0) PDFfilePath1 else PDFfilePath2
+                val file = File(path)
+                val dir = file.parentFile
+                if (!dir.exists())
+                    dir.mkdirs()
+
+                if (file.exists()) {
+                    file.delete()
+                }
+
+                if (0 ==type) {
+                    val document = PdfDocument()
+                    val page = document.startPage(PdfDocument.PageInfo.Builder(2120, 3000, 1).create())
+
+                    view?.draw(page.canvas)
+                    document.finishPage(page)
+
+                    var filestream: ByteArrayOutputStream? = null
+                    var fos: FileOutputStream? = null
+                    try {
+                        filestream = ByteArrayOutputStream(2000000)
+                        fos = FileOutputStream(path, false)
+                        document.writeTo(filestream)
+                        val a = filestream.toByteArray()
+                        fos.write(a, 0, a.size)
+                    } catch (e: Exception) {
+                        throw e
+                    } finally {
+                        filestream?.close()
+                        fos?.close()
+                    }
+
+                    document.close()
+                } else {
+                    try {
+                        val pdfFile = File(pdfFilePath)
+                        if (pdfFile.exists()) {
+                            pdfFile.delete()
+                        }
+                        pdfFile.createNewFile()
+                        descriptor = ParcelFileDescriptor.open(pdfFile, ParcelFileDescriptor.MODE_READ_WRITE)
+                        // 设置打印参数
+                        val isoA4 = PrintAttributes.MediaSize.ISO_A4
+                        val attributes = PrintAttributes.Builder()
+                            .setMediaSize(isoA4)
+                            .setResolution(PrintAttributes.Resolution("id", Context.PRINT_SERVICE, 500, 500))
+                            .setColorMode(PrintAttributes.COLOR_MODE_COLOR)
+                            .setMinMargins(PrintAttributes.Margins.NO_MARGINS)
+                            .build()
+                        // 计算webview打印需要的页数
+                        val numberOfPages = (mWebView.getContentHeight() * 500 / isoA4.heightMils) as Int
+                        ranges = arrayOf(PageRange(0, numberOfPages))
+                        // 创建pdf文件缓存目录
+                        // 获取需要打印的webview适配器
+                        printAdapter = mWebView.createPrintDocumentAdapter()
+                        // 开始打印
+                        printAdapter.onStart()
+                        printAdapter.onLayout(attributes, attributes, CancellationSignal(),
+                            getLayoutResultCallback(object : InvocationHandler() {
+                                @Throws(Throwable::class)
+                                operator fun invoke(proxy: Any, method: Method, args: Array<Any>): Any? {
+                                    if (method.getName().equals("onLayoutFinished")) {
+                                        // 监听到内部调用了onLayoutFinished()方法,即打印成功
+                                        onLayoutSuccess()
+                                    } else {
+                                        // 监听到打印失败或者取消了打印
+                                        Toast.makeText(this@MainActivity, "导出失败,请重试", Toast.LENGTH_SHORT).show()
+                                    }
+                                    return null
+                                }
+                            }), Bundle())
+                    } catch (e: FileNotFoundException) {
+                        e.printStackTrace()
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+
+                }
+            }
+        }
+
+        webView.loadDataWithBaseURL(null, html, "text/HTML", "UTF-8", null)
+    }
+
+    private void onLayoutSuccess () throws IOException {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            PrintDocumentAdapter.WriteResultCallback callback = getWriteResultCallback(new InvocationHandler() {
+                @Override
+                public Object invoke (Object o, Method method, Object[] objects) {
+                    if (method.getName().equals("onWriteFinished")) {
+                        Toast.makeText(MainActivity.this, "导出成功", Toast.LENGTH_SHORT).show();
+                        mProgressBar.setVisibility(View.GONE);
+                    } else {
+                        Toast.makeText(MainActivity.this, "导出失败", Toast.LENGTH_SHORT).show();
+                    }
+                    return null;
+                }
+            });
+            printAdapter.onWrite(ranges, descriptor, new CancellationSignal(), callback);
+        }
+    }
+
+    public fun getLayoutResultCallback (invocationHandler: InvocationHandler) : PrintDocumentAdapter.LayoutResultCallback {
+        return ProxyBuilder.forClass(PrintDocumentAdapter.LayoutResultCallback.class)
+                .handler(invocationHandler)
+                .build()
+    }
+
+    public fun getWriteResultCallback (invocationHandler: InvocationHandler) : PrintDocumentAdapter.WriteResultCallback {
+        return ProxyBuilder.forClass(PrintDocumentAdapter.WriteResultCallback.class)
+                .handler(invocationHandler)
+                .build()
+    }
+    */
+
     private fun printHtml(html: String) {
-        val webView = WebView(this);
+        val webView = WebView(this)
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 return false
@@ -101,7 +236,7 @@ class DocPrintAdapter2(val context: Context, val filePath: String) : PrintDocume
         if (cancellationSignal!!.isCanceled()) {
             callback?.onLayoutCancelled()
         } else {
-            val builder = PrintDocumentInfo.Builder("filename.pdf");
+            val builder = PrintDocumentInfo.Builder("filename.pdf")
             builder.setContentType(PrintDocumentInfo.CONTENT_TYPE_DOCUMENT)
                     .setPageCount(PrintDocumentInfo.PAGE_COUNT_UNKNOWN)
                     .build()
@@ -114,8 +249,8 @@ class DocPrintAdapter2(val context: Context, val filePath: String) : PrintDocume
         var out: OutputStream? = null
         try {
             val file = File(filePath)
-            input = FileInputStream(file);
-            out = FileOutputStream(destination?.fileDescriptor);
+            input = FileInputStream(file)
+            out = FileOutputStream(destination?.fileDescriptor)
 
             val buf = ByteArray(16384)//Byte[16384]
             var size: Int

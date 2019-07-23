@@ -21,7 +21,7 @@ class BottomNavActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
         //navigation.enableShiftMode(false)
         //navigation.isItemHorizontalTranslationEnabled = false
         navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
-        val badge = navigation.showBadge(R.id.navigation_share)
+        val badge = navigation.getOrCreateBadge(R.id.navigation_share)
         badge.number = 100
         //badge.badgeTextColor = 0xFF0000
         navigation.setOnNavigationItemSelectedListener(this)
