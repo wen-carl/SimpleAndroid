@@ -1,8 +1,10 @@
 package com.seven.simpleandroid.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.seven.simpleandroid.R
@@ -29,28 +31,29 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
 
     private fun bindData() {
         val data = mutableListOf<ClassModel>()
-        data.add(ClassModel("SwipeRefresh"))
-        data.add(ClassModel("Drawer1", "Drawer layout is super layout"))
-        data.add(ClassModel("Drawer2", "Drawer layout is child layout"))
-        data.add(ClassModel("BottomNavigation"))
-        data.add(ClassModel("ScrollingActivity"))
-        data.add(ClassModel("RecyclerView", "Vertical, Horizontal, Grid_Vertical, Grid_Horizontal"))
-        data.add(ClassModel("ToolbarActivity", "CollapsingToolbarLayout, TabLayout"))
-        data.add(ClassModel("NestedActivity"))
-        data.add(ClassModel("FragmentActivity"))
-        data.add(ClassModel("MultipleTabActivity"))
-        data.add(ClassModel("BannerActivity"))
-        data.add(ClassModel("MoveActivity"))
-        data.add(ClassModel("QRCodeActivity"))
-        data.add(ClassModel("WifiActivity"))
-        data.add(ClassModel("PermissionActivity"))
-        data.add(ClassModel("SharedElementActivity"))
-        data.add(ClassModel("NestedViewPagerActivity"))
-        data.add(ClassModel("LazyLoadingFragmentActivity"))
-        data.add(ClassModel("TabbedActivity"))
-        data.add(ClassModel("PrintActivity"))
-
+        data.add(ClassModel(SwipeActivity::class.java.name))
+        data.add(ClassModel(Drawer1Activity::class.java.name, "Drawer layout is super layout"))
+        data.add(ClassModel(Drawer2Activity::class.java.name, "Drawer layout is child layout"))
+        data.add(ClassModel(BottomNavActivity::class.java.name))
+        data.add(ClassModel(ScrollingActivity::class.java.name))
+        data.add(ClassModel(RecyclerViewActivity::class.java.name, "Vertical, Horizontal, Grid_Vertical, Grid_Horizontal"))
+        data.add(ClassModel(ToolbarActivity::class.java.name, "CollapsingToolbarLayout, TabLayout"))
+        data.add(ClassModel(NestedActivity::class.java.name))
+        data.add(ClassModel(FragmentActivity::class.java.name))
+        data.add(ClassModel(MultipleTabActivity::class.java.name))
+        data.add(ClassModel(BannerActivity::class.java.name))
+        data.add(ClassModel(MoveActivity::class.java.name))
+        data.add(ClassModel(QRCodeActivity::class.java.name))
+        data.add(ClassModel(WifiActivity::class.java.name))
+        data.add(ClassModel(PermissionActivity::class.java.name))
+        data.add(ClassModel(SharedElementActivity::class.java.name))
+        data.add(ClassModel(NestedViewPagerActivity::class.java.name))
+        data.add(ClassModel(LazyLoadingFragmentActivity::class.java.name))
+        data.add(ClassModel(TabbedActivity::class.java.name))
+        data.add(ClassModel(PrintActivity::class.java.name))
+        data.add(ClassModel(TouchEventActivity::class.java.name))
         val adapter = ClassAdapter(this, data)
+
         rvMain.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         rvMain.addItemDecoration(ItemDecoration(this))
         rvMain.adapter = adapter
@@ -61,43 +64,16 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         adapter.itemClick = this
     }
 
-    override fun itemClicked(view: View, position: Int, model: ClassModel) {
-        val tempClass = when (model.name) {
-            "SwipeRefresh" -> SwipeActivity::class.java
-            "Drawer1" -> Drawer1Activity::class.java
-            "Drawer2" -> Drawer2Activity::class.java
-            "BottomNavigation" -> BottomNavActivity::class.java
-            "ScrollingActivity" -> ScrollingActivity::class.java
-            "RecyclerView" -> RecyclerViewActivity::class.java
-            "ToolbarActivity" -> ToolbarActivity::class.java
-            "NestedActivity" -> NestedActivity::class.java
-            "FragmentActivity" -> FragmentActivity::class.java
-            "MultipleTabActivity" -> MultipleTabActivity::class.java
-            "BannerActivity" -> BannerActivity::class.java
-            "MoveActivity" -> MoveActivity::class.java
-            "QRCodeActivity" -> QRCodeActivity::class.java
-            "WifiActivity" -> WifiActivity::class.java
-            "PermissionActivity" -> PermissionActivity::class.java
-            "SharedElementActivity" -> SharedElementActivity::class.java
-            "NestedViewPagerActivity" -> NestedViewPagerActivity::class.java
-            "LazyLoadingFragmentActivity" -> LazyLoadingFragmentActivity::class.java
-            "TabbedActivity" -> TabbedActivity::class.java
-            "PrintActivity" -> PrintActivity::class.java
-            else -> null
-        }
-
-//        try {
-//            tempClass = Class.forName(model.name) as Class<out AppCompatActivity>?
-//        } catch (e : ClassNotFoundException) {
-//            Toast.makeText(this, e.localizedMessage, Toast.LENGTH_SHORT).show()
-//        }
-
-        if (null == tempClass) {
-            Snackbar.make(rvMain, model.name + " is coding!", Snackbar.LENGTH_SHORT).show()
-        } else {
-            val intent = Intent(this, tempClass)
+    override fun itemClicked(view: View, position: Int, model: ClassModel) = try {
+        val tempClass = Class.forName(model.name) as Class<out AppCompatActivity>?
+        val intent = Intent(this, tempClass)
+        if (null != intent.resolveActivity(packageManager)) {
             startActivity(intent)
+        } else {
+            Snackbar.make(rvMain, model.name + " is coding!", Snackbar.LENGTH_SHORT).show()
         }
+    } catch (e : ClassNotFoundException) {
+        Toast.makeText(this, e.localizedMessage, Toast.LENGTH_SHORT).show()
     }
 
     override fun itemLongClicked(view: View, position: Int, model: ClassModel) {
