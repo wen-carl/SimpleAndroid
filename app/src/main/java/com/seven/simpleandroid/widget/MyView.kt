@@ -13,8 +13,9 @@ class MyView(context: Context, attributes: AttributeSet?, defStyleAttr: Int, def
     constructor(context: Context) : this(context, null)
 
     override fun onTouchEvent(ev: MotionEvent?): Boolean {
-        var result = super.onTouchEvent(ev)
-        println(String.format("MyView->onInterceptTouchEvent: action->${getEventName(ev?.action)} X->${ev?.x} Y->${ev?.y} result->$result"))
+        //var result = super.onTouchEvent(ev)
+        var result = true
+        println(String.format("MyView->onTouchEvent: action->${getEventName(ev?.action)} X->${ev?.x} Y->${ev?.y} result->$result"))
         return result
     }
 
