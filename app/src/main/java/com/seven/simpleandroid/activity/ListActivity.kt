@@ -1,12 +1,15 @@
 package com.seven.simpleandroid.activity
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.common.GoogleApiAvailability
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.iid.FirebaseInstanceId
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ClassAdapter
 import com.seven.simpleandroid.interfaces.IItemClickListener
@@ -23,6 +26,25 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
         findView()
         bindData()
         bindEvent()
+
+        FirebaseInstanceId.getInstance().instanceId
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        Log.w("ListActivity", "getInstanceId failed", task.exception)
+                        return@OnCompleteListener
+                    }
+
+                    // Get new Instance ID token
+                    val token = task.result?.token
+
+                    // Log and toast
+                    //val msg = getString(R.string.msg_token_fmt, token)
+                    //Log.d("ListActivity", msg)
+                    Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
+                })
+
+        GoogleApiAvailability.getInstance().makeGooglePlayServicesAvailable(this)
+        GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this)
     }
 
     private fun findView() {
