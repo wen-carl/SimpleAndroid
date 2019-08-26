@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
@@ -43,8 +44,10 @@ class ListActivity : AppCompatActivity(), IItemClickListener<ClassModel> {
                     Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
                 })
 
-        GoogleApiAvailability.getInstance().makeGooglePlayServicesAvailable(this)
-        GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this)
+        val available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this)
+        if (available != ConnectionResult.SUCCESS) {
+            GoogleApiAvailability.getInstance().makeGooglePlayServicesAvailable(this)
+        }
     }
 
     private fun findView() {
