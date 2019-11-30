@@ -39,7 +39,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         Log.d(TAG, "From: ${remoteMessage?.from}")
 
         // Check if message contains a data payload.
-        remoteMessage?.data?.isNotEmpty()?.let {
+        remoteMessage.data.isNotEmpty().let {
             Log.d(TAG, "Message data payload: " + remoteMessage.data)
 
             if (/* Check if data needs to be processed by long running job */ true) {
@@ -52,7 +52,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
 
         // Check if message contains a notification payload.
-        remoteMessage?.notification?.let {
+        remoteMessage.notification?.let {
             Log.d(TAG, "Message Notification Body: ${it.body}")
             sendNotification(it.body!!)
         }
