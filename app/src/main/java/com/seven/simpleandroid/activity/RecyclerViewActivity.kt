@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import com.seven.simpleandroid.R
 import com.seven.simpleandroid.adapter.ClassAdapter
 import com.seven.simpleandroid.model.ClassModel
@@ -19,8 +19,8 @@ class RecyclerViewActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val manager = androidx.recyclerview.widget.LinearLayoutManager(this)
-        manager.orientation = androidx.recyclerview.widget.RecyclerView.VERTICAL
+        val manager = LinearLayoutManager(this)
+        manager.orientation = RecyclerView.VERTICAL
         rvRecycler.layoutManager = manager
 
         val data = mutableListOf<ClassModel>()
@@ -45,23 +45,23 @@ class RecyclerViewActivity : AppCompatActivity() {
                 finish()
             }
             R.id.action_vertical -> {
-                val manager = androidx.recyclerview.widget.LinearLayoutManager(this)
-                manager.orientation = androidx.recyclerview.widget.RecyclerView.VERTICAL
+                val manager = LinearLayoutManager(this)
+                manager.orientation = RecyclerView.VERTICAL
                 rvRecycler.layoutManager = manager
             }
             R.id.action_horizontal -> {
-                val manager = androidx.recyclerview.widget.LinearLayoutManager(this)
-                manager.orientation = androidx.recyclerview.widget.RecyclerView.HORIZONTAL
+                val manager = LinearLayoutManager(this)
+                manager.orientation = RecyclerView.HORIZONTAL
                 rvRecycler.layoutManager = manager
             }
             R.id.action_grid_v -> {
-                val manager = androidx.recyclerview.widget.GridLayoutManager(this, 4)
-                manager.orientation = androidx.recyclerview.widget.RecyclerView.VERTICAL
+                val manager = GridLayoutManager(this, 4)
+                manager.orientation = RecyclerView.VERTICAL
                 rvRecycler.layoutManager = manager
             }
             R.id.action_grid_h -> {
-                val manager = androidx.recyclerview.widget.GridLayoutManager(this, 4)
-                manager.orientation = androidx.recyclerview.widget.RecyclerView.HORIZONTAL
+                val manager = GridLayoutManager(this, 4)
+                manager.orientation = RecyclerView.HORIZONTAL
                 rvRecycler.layoutManager = manager
             }
             else -> return super.onOptionsItemSelected(item)
