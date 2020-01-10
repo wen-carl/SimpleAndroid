@@ -16,6 +16,15 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
+    }
+    signingConfigs {
+        release {
+            storeFile file('key.keystore')
+            storePassword 'android'
+            keyAlias = 'androiddebugkey'
+            keyPassword 'android'
+        }
     }
     buildTypes {
         debug {
@@ -24,6 +33,7 @@ android {
             debuggable true
             //applicationIdSuffix ".debug"
             versionNameSuffix ".debug"
+            ext.alwaysUpdateBuildId = false
         }
         release {
             minifyEnabled true
@@ -34,6 +44,8 @@ android {
             initWith(debug)
             buildConfigField("String","API_URL","\"https://www.baidu.com\"")
             manifestPlaceholders = [hostName:"internal.example.com"]
+            debuggable = false
+            signingConfig signingConfigs.release
             //applicationIdSuffix ".debugStaging"
         }
     }
@@ -64,6 +76,45 @@ android {
             versionCode
             versionNameSuffix "-minApi21"
         }
+    }
+    splits {
+        // Configures multiple APKs based on screen density.
+        density {
+
+            // Configures multiple APKs based on screen density.
+            enable false
+
+            // Specifies a list of screen densities Gradle should not create multiple APKs for.
+            //exclude "ldpi", "hdpi", "mdpi"
+
+            // Specifies a list of compatible screen size settings for the manifest.
+            //compatibleScreens 'small', 'normal', 'large', 'xlarge'
+
+            reset()
+            include "xxhdpi", "xhdpi", "xxxhdpi"
+        }
+
+        // Configures multiple APKs based on ABI.
+        abi {
+
+            // Enables building multiple APKs per ABI.
+            enable false
+
+            // By default all ABIs are included, so use reset() and include to specify that we only
+            // want APKs for x86 and x86_64.
+
+            // Resets the list of ABIs that Gradle should create APKs for to none.
+            reset()
+
+            // Specifies a list of ABIs that Gradle should create APKs for.
+            include "x86", "x86_64"
+
+            // Specifies that we do not want to also generate a universal APK that includes all ABIs.
+            universalApk true
+        }
+    }
+    lint {
+        
     }
     /*
     variantFilter { variant ->
