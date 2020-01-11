@@ -113,8 +113,8 @@ android {
             universalApk true
         }
     }
-    lint {
-        
+    lintOptions {
+        abortOnError = false
     }
     /*
     variantFilter { variant ->
